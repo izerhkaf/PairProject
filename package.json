@@ -1,0 +1,26 @@
+{
+  "name": "PairProject",
+  "version": "1.0.0",
+  "description": "1. Home =>\r     nampilin list dokter, button login, button register\r 2. Login => //farhan\r     login form\r 3. Register (khusus patient baru) => //farhan\r     register form(name, birth_date, email, gender)\r     validasi: nama kosong, birth_date kosong, validasei email, gender kosong\r 4. login admin =>\r     navbar(doctor list, patient list)\r     bisa update dan delete list\r 5. login patient =>\r     navbar(home, profile, consultation)\r     list doctor no action\r 6. consultation =>\r     navbar(home, profile, consultation)\r     form konsultasi -> diagnosa <text box>, nama doctor <select>, submit button\r     validasi kalau diagnosa kosong\r 7. profile =>\r     nampilin data patient\r     edit optional\r 8. login doctor =>\r     list pasien kalau ada pasien yang isDone = false ada action kirim resep via email -> pasien isDone = true",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/izerhkaf/PairProject.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/izerhkaf/PairProject/issues"
+  },
+  "homepage": "https://github.com/izerhkaf/PairProject#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "pg": "^8.5.1",
+    "sequelize": "^6.6.2"
+  }
+}
