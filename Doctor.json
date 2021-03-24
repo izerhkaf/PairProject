@@ -1,0 +1,30 @@
+[
+    {
+        "name": "Dadang",
+        "specialist": "Radang",
+        "gender": "Male",
+        "username": "dadang123",
+        "password": "12345"
+    },
+    {
+        "name": "Panjul",
+        "specialist": "Batuk Pilek",
+        "gender": "Male",
+        "username": "panjul123",
+        "password": "12345"
+    },
+    {
+        "name": "Mina",
+        "specialist": "Mata",
+        "gender": "Female",
+        "username": "mina123",
+        "password": "12345"
+    },
+    {
+        "name": "Ilya",
+        "specialist": "Penyakit Dalam",
+        "gender": "Female",
+        "username": "ilya123",
+        "password": "12345"
+    }
+]
