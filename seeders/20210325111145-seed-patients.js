@@ -1,5 +1,5 @@
 'use strict';
-const data = require('../data/Doctor.json')
+const data = require('../data/patient.json')
 const bcrypt = require('bcryptjs')
 const salt = bcrypt.genSaltSync(10)
 
@@ -11,7 +11,7 @@ data.forEach((element) =>{
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('Doctors', data, {})
+    return queryInterface.bulkInsert('Patients', data, {})
     /**
      * Add seed commands here.
      *
@@ -24,7 +24,7 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('Doctors', null, {})
+    return queryInterface.bulkDelete('Patients', null, {})
     /**
      * Add commands to revert seed here.
      *
