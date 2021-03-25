@@ -1,0 +1,35 @@
+<%- include('./components/header.ejs', {title: "Add Doctor"}) %>
+<%- include('./components/navbar.ejs', {title: "admin"}) %>
+    <form action="/add/doctor" method="POST">
+        <div>
+            <label>Name</label>
+            <input type="text" name="name">
+        </div>
+        <div>
+            <label>Specialist</label>
+            <input type="text" name="specialist">
+        </div>
+        <div>
+            <label>Gender</label>
+            <select name="gender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+        </div>
+        <div>
+            <label>Username</label>
+            <input type="text" name="username">
+        </div>
+        <div>
+            <label>Password</label>
+            <input type="password" name="password">
+        </div>
+        <div>
+            <input type="submit" value="Add Doctor">
+            <a href="/admin/home">Cancel</a>
+        </div>
+    </form>
+    <% errorList.forEach((element) =>{ %>
+        <p><%= element %></p>
+    <% }) %>
+<%- include('./components/footer.ejs') %>

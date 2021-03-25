@@ -1,0 +1,25 @@
+<%- include('./components/header.ejs', {title: "Send Receipt"}) %>
+<%- include('./components/navbar.ejs', {title: datas.doctor.name}) %>
+    <form action="/sendreceipt/<%= datas.junction.consultationId %>" method="POST">
+        <div>
+            <label>Patient's Name: <%= datas.patient.name %></label>
+        </div>
+        <div>
+            <label>Patient's Age: <%= helpers.getAge(datas.patient.birth_date) %></label>
+        </div>
+        <div>
+            <label>Patient's Diagnosa: <%= datas.junction.diagnosa %></label>
+        </div>
+        <div>
+            <label>Input Receipt</label>
+            <textarea name="receipt" cols="30" rows="5"></textarea>
+        </div>
+        <div>
+            <tr>
+                <td><input type="submit" value="Send Receipt"></td>
+                <td><a href="/home">Cancel</a></td>
+            </tr>
+        </div>
+
+    </form>
+<%- include('./components/footer.ejs') %>

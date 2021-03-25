@@ -1,0 +1,46 @@
+<%- include('./components/header.ejs', {title: "Home"}) %>
+<%- include('./components/navbar.ejs', {title: datas.doctor.addDr()}) %>
+<br>
+<h3>List Pasien Belum Ditangani</h3>
+<table border="3">
+    <tr>
+        <td>Name</td>
+        <td>Diagnosa</td>
+        <td>Action</td>
+    </tr>
+    <% datas.doctorpatient.forEach((element) =>{ %>
+        <% datas.doctor.Patients.forEach((ele) =>{ %>
+            <% if(element.isDone === false && element.patientId === ele.id){ %>
+                <tr>
+                    <td><%= ele.name %></td>
+                    <td><%= element.diagnosa %></td>
+                    <td><a href="/sendreceipt/<%= element.consultationId %>">Send Receipt</a></td>
+                </tr>
+            <% } %>
+        <% }) %>
+    <% }) %>
+</table>
+<br>
+<h3>List Pasien Sudah Ditangani</h3>
+<table border="3">
+    <tr>
+        <td>Name</td>
+        <td>Diagnosa</td>
+        <td>Receipt</td>
+        <td>Tanggal Pemberian Resep</td>
+    </tr>
+    <% datas.doctorpatient.forEach((element) =>{ %>
+        <% datas.doctor.Patients.forEach((ele) =>{ %>
+            <% if(element.isDone === true && element.patientId === ele.id){ %>
+                <tr>
+                    <td><%= ele.name %></td>
+                    <td><%= element.diagnosa %></td>
+                    <td><%= element.receipt %></td>
+                    <td><%= helpers.getDate(element.updatedAt) %></td>
+                </tr>
+            <% } %>
+        <% }) %>
+    <% }) %>
+</table>
+
+<%- include('./components/footer.ejs') %>
