@@ -1,0 +1,45 @@
+<%- include('./components/header.ejs', {title: "Home"}) %>
+<%- include('./components/navbar.ejs', {title: "admin"}) %>
+    <h3>Doctor Datas</h3>
+    <br>
+    <a href="/add/doctor">Add New Doctor</a>
+    <table border=2>
+        <tr>
+            <td>Name</td>
+            <td>Specialist</td>
+            <td>Actions</td>
+        </tr>
+        <% adminDatas.doctor.forEach((element) =>{ %>
+            <tr>
+                <td><%= element.addDr() %></td>
+                <td><%= element.specialist %></td>
+                <td><a href="/doctor/update/<%=element.id%>">Edit</a> | <a onclick="return confirm('Are you sure?')" href="/doctor/delete/<%=element.id%>">Delete</a></td>
+            </tr>
+        <% }) %>
+    </table>
+    <br>
+    <h3>Patient List</h3>
+    <br>
+    <a href="/add/patient">Add New Patient</a>
+    <table border=2>
+        <tr>
+            <td>Name</td>
+            <td>Birth Date</td>
+            <td>Email</td>
+            <td>Phone</td>
+            <td>Gender</td>
+            <td>Action</td>
+            <td></td>
+        </tr>
+        <% adminDatas.patient.forEach((element) =>{ %>
+            <tr>
+                <td><%= element.name %></td>
+                <td><%= helpers.getDate(element.birth_date) %></td>
+                <td><%= element.email %></td>
+                <td><%= element.phone_number %></td>
+                <td><%= element.gender %></td>
+                <td><a onclick="return confirm('Are you sure?')" href="/patient/delete/<%=element.id%>">Delete</a></td>
+            </tr>
+        <% }) %>
+    </table>
+<%- include('./components/footer.ejs') %>

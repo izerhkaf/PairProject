@@ -1,0 +1,27 @@
+<%- include('./components/header.ejs', {title: "Send Receipt"}) %>
+<%- include('./components/navbar.ejs', {title: datas.patient.name}) %>
+    <h2>Medical History</h2>
+    <br>
+
+    <table border=2>
+        <tr>
+            <td>Deseases</td>
+            <td>Doctor</td>
+            <td>Date</td>
+            <td>Status</td>
+        </tr>
+        <% datas.junction.forEach((ele) =>{ %>
+            <% datas.doctor.forEach((element) =>{ %>
+                <% if(ele.doctorId === element.id){ %>
+                    <tr>
+                        <td><%= ele.diagnosa %></td>
+                        <td><%= element.name %></td>
+                        <td><%= helpers.getDate(ele.createdAt) %></td>
+                        <td><%= helpers.changeStatus(ele.isDone) %></td>
+                    </tr>
+                <% } %>            
+            <% }) %>
+        <% }) %>
+    </table>
+
+<%- include('./components/footer.ejs') %>

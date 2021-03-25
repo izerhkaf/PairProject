@@ -1,0 +1,31 @@
+<%- include('./components/header.ejs', {title: "Update Doctor"}) %>
+<%- include('./components/navbar.ejs', {title: "admin"}) %>
+<form action="/doctor/update/<%= data.id %>" method="POST">
+    <div>
+        <label>Name</label>
+        <input type="text" name="name" value="<%= data.name %>">
+    </div>
+    <div>
+        <label>Specialist</label>
+        <input type="text" name="specialist" value="<%= data.specialist %>">
+    </div>
+    <div>
+        <label>Gender</label>
+        <select name="gender">
+            <option value="Male" <%= (data.gender === "Male" ? "selected":"")%>>Male</option>
+            <option value="Female" <%= (data.gender === "Female" ? "selected":"")%>>Female</option>
+        </select>
+    </div>
+    <div>
+        <label>Username</label>
+        <input type="text" name="username" value="<%= data.username %>">
+    </div>
+    <div>
+        <input type="submit" value="Update Doctor">
+        <a href="/admin/home">Cancel</a>
+    </div>
+</form>
+<% errorList.forEach((element) =>{ %>
+    <p><%= element %></p>
+<% }) %>
+<%- include('./components/footer.ejs') %>

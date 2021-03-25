@@ -18,10 +18,19 @@ module.exports = (sequelize, DataTypes) => {
     patientId: DataTypes.INTEGER,
     receipt: DataTypes.STRING,
     diagnosa: DataTypes.STRING,
-    isDone: DataTypes.BOOLEAN
+    isDone: DataTypes.BOOLEAN,
+    consultationId: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'DoctorPatient',
+    hooks:{
+      beforeCreate(instances, options){
+        let seconds = new Date().getSeconds()
+        let minutes = new Date().getMinutes()
+        let date = new Date().getDate()
+        instances.consultationId = `${instances.name}${date}${minutes}${seconds}`
+      }
+    }
   });
   return DoctorPatient;
 };
