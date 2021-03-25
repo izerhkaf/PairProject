@@ -1,0 +1,11 @@
+[
+    {
+        "name": "Andi",
+        "birth_date": "1990-03-21",
+        "email": "andi@mail.com",
+        "gender": "male",
+        "username": "andi",
+        "password": "12345",
+        "phone_number": "089675843657"
+    }
+]

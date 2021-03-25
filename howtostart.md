@@ -10,5 +10,7 @@ routes:
             patients(list doctor[nama, specialist])
    /consultation -> patients(form[disease:txbox, choosedoctor:select])
    /profile -> patients(data patients)
-   /login
+   /login : admin, pasien, dokter
    /register
+
+   npx sequelize seed:generate --name seed-patients

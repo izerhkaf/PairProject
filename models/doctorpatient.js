@@ -14,14 +14,37 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   DoctorPatient.init({
-    doctorId: DataTypes.INTEGER,
+    doctorId: {
+      validate: {
+        notEmpty : {
+          msg : "Doctor is not allowed empty"
+        }  
+      },
+      type: DataTypes.INTEGER,
+    },
     patientId: DataTypes.INTEGER,
     receipt: DataTypes.STRING,
-    diagnosa: DataTypes.STRING,
+    diagnosa: {
+      validate: {
+        notEmpty : {
+          msg : "diagnosa is not allowed empty"
+        }  
+      },
+      type: DataTypes.STRING
+    },
     isDone: DataTypes.BOOLEAN
   }, {
     sequelize,
     modelName: 'DoctorPatient',
+    // hooks: {
+    //   beforeCreate(instances, options){
+    //     let seconds = new Date().getSeconds()
+    //     let minutes = new Date().getMinutes()
+    //     let date = new Date().getDate()
+    //     // console.log(instances)
+    //     // console.log(`${instances.name}/${date}/${minutes}/${seconds}`) 
+    //   }
+    // }
   });
   return DoctorPatient;
 };

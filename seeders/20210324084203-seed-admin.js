@@ -1,5 +1,5 @@
 'use strict';
-const data = require('../admin.json')
+const data = require('../data/admin.json')
 const bcrypt = require('bcryptjs')
 const salt = bcrypt.genSaltSync(10)
 

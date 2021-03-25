@@ -13,15 +13,64 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Patient.belongsToMany(models.Doctor, {through: "DoctorPatient", foreignKey:"patientId"})
     }
+    static getFormattedDate(date) {
+      let formatted = new Date(date).toISOString().split("T")[0]
+
+      return formatted
+    }
   };
   Patient.init({
-    name: DataTypes.STRING,
-    birth_date: DataTypes.DATE,
-    email: DataTypes.STRING,
-    gender: DataTypes.STRING,
-    phone_number: DataTypes.STRING,
-    username: DataTypes.STRING,
-    password: DataTypes.STRING
+    name: {
+      validate: {
+        notEmpty : {
+          msg : "name is not allowed empty"
+        }  
+      },
+      type: DataTypes.STRING
+    },
+    birth_date: {
+      validate: {
+        notEmpty : {
+          msg : "birthdate is not allowed empty"
+        }  
+      },
+      type: DataTypes.DATE
+    },
+    email: {
+      validate: {
+        isEmail : {
+          msg : "email is not allowed empty"
+        }  
+      },
+      type: DataTypes.STRING
+    },
+    gender: {
+      type: DataTypes.STRING
+    },
+    phone_number: {
+      validate: {
+        notEmpty : {
+          msg : "phone number is not allowed empty"
+        }  
+      },
+      type: DataTypes.STRING
+    },
+    username: {
+      validate: {
+        notEmpty : {
+          msg : "username is not allowed empty"
+        }  
+      },
+      type: DataTypes.STRING
+    },
+    password: {
+      validate: {
+        notEmpty : {
+          msg : "password is not allowed empty"
+        }  
+      },
+      type: DataTypes.STRING
+    }
   }, {
     sequelize,
     modelName: 'Patient',

@@ -1,5 +1,12 @@
 const router = require('express').Router()
-const Controller = require('../controllers/controller.js')
+const patientRouter = require('./patientRoute')
+const registrationRouter = require('./registrationRoute')
+
+router.use('/patients', patientRouter)
+router.use('/registration', registrationRouter)
+
+
+
 
 
 
