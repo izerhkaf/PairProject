@@ -28,7 +28,8 @@ module.exports = (sequelize, DataTypes) => {
         let seconds = new Date().getSeconds()
         let minutes = new Date().getMinutes()
         let date = new Date().getDate()
-        instances.consultationId = `${instances.name}${date}${minutes}${seconds}`
+        let random = Math.floor(Math.random() * 101)
+        instances.consultationId = `${random}${date}${minutes}${seconds}`
       }
     }
   });

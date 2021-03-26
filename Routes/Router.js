@@ -24,5 +24,8 @@ router.post('/doctor/update/:id', MiddleWare.isLogin, MiddleWare.isAdmin, Contro
 router.get('/doctor/delete/:id', MiddleWare.isLogin, MiddleWare.isAdmin, Controller.deleteDoctor)
 router.get('/patient/delete/:id', MiddleWare.isLogin, MiddleWare.isAdmin, Controller.deletePatient)
 
+router.get('/patient/add', MiddleWare.isLogin, MiddleWare.isPatient, Controller.create)
+router.post('/patient/add', MiddleWare.isLogin, MiddleWare.isPatient, Controller.createPost)
+
 
 module.exports = router

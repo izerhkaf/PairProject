@@ -3,6 +3,8 @@ const bcrypt = require('bcryptjs')
 const helpers = require('../helpers/helpers.js')
 const axios = require('axios')
 
+
+
 class Controller{
     static login(req, res){
         let errorList = []
@@ -143,8 +145,9 @@ class Controller{
             })
             .then((patient) =>{
                 const phone = patient.phone_number
-                const message = `${req.body.receipt}`
-                const url = `http://fortislook.hol.es/komu?pid=1374811u89&num=${phone}&type=1&message=${message}`;
+                const message = `Halo, ${patient.name}, berikut resep yang diberikan oleh dokter kami ${req.body.receipt}`
+                const apiKey = generateAPIKEY()
+                const url = `${apiKey}${phone}&type=1&message=${message}`;
                 axios.get(url,{
                     timeout:0
                 })
@@ -281,6 +284,33 @@ class Controller{
             .catch((err) =>{
                 res.send(err)
             })
+    }
+
+    static create(req, res) {
+        Doctor.findAll()
+        .then(doctor=> {
+            res.render('patientConsultation', {doctor})
+        })
+        .catch(err => {
+            let messages = []
+            if (err.name === "SequelizeValidationError") {
+                   messages.push(err.errors[0].message)
+                }
+            res.send(messages)
+        })
+    }
+
+    static createPost(req, res) {
+        let input = req.body
+        input.patientId = req.session.userid
+        input.isDone = false
+        DoctorPatient.create(input) 
+        .then(()=> {
+            res.redirect('/patient/home') //sementara, harus diganti ke patients home
+        })
+        .catch(err=> {
+            res.send(err)
+        })
     }
 }
 
